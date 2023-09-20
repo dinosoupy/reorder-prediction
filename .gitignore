@@ -1,8 +1,8 @@
 # Ignore all files in data/raw
-data/raw/*
+data/*
 
 # Except for .md files
-!data/raw/*.md
+!data/*.md
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
