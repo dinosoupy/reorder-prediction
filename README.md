@@ -5,18 +5,21 @@ E-commerce stores collect data from users (how often a user reordered an item) a
 - Give better reccomendations
 - Understand which products and marketing channels yield the highest return on investment
 
-XGBoost is a gradient boosting technique that uses [decision tree](http://scikit-learn.org/stable/modules/tree.html) ensembles for identifying which products are likely to be reordered at a store.
+This repository serves as an idealised examples of models that compute probabilities of a reorder from the [instacart opensource dataset](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2). This dataset provides transaction level data about orders and their associated products. Look through notebooks <INSERT LINK> for all model implementations and techniques.
 
-## Why XGBoost
+## RNN model
+No manual feature engineering - pure deep learning approach. This approach can be reformulated as a binary prediction task: Given a user, a product, and the user's prior purchase history, predict whether or not the given product will be reordered in the user's next order. In short, the approach was to fit a variety of generative models to the prior data and use the internal representations from these models as features to second-level models.
 
-## Feature Engineering
-I decided to use the [instacart opensource dataset](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) since it provides transaction level data about orders and their associated products.
+## XGBoost model
+Gradient boosting and tree ensembles tend to improve the prediction performance and reduce variance, leading to more stable and accurate results. 
 
-This is the data scheme:
+## Data Scheme
+The purpose of the models implemented here is not to optimise prediction scores on the instacart dataset, but to design a pipeline for tackling similar problems with other tabular ecommerce datasets.
+    
 * `orders` (3.4m rows, 206k users):
 * `order_id`: order identifier
 * `user_id`: customer identifier
-* `eval_set`: which evaluation set this order belongs in (see `SET` described below)
+* `eval_set`: prior / train / test
 * `order_number`: the order sequence number for this user (1 = first, n = nth)
 * `order_dow`: the day of the week the order was placed on
 * `order_hour_of_day`: the hour of the day the order was placed on
@@ -44,17 +47,9 @@ This is the data scheme:
 
 where `SET` is one of the four following evaluation sets (`eval_set` in `orders`):
 * `"prior"`: orders prior to that users most recent order (~3.2m orders)
-* `"train"`: training data supplied to participants (~131k orders)
-* `"test"`: test data reserved for machine learning competitions (~75k orders)
+* `"train"`: training data (~131k orders)
 
 I've gone in depth in the data exploration notebook <INSERT LINK>
 
 ## Objective function
 I've used mean F1 score as the evaluation metric. More details are in the performance-analysis notebook <INSERT LINK>
-
-
-
-
-
-
-
