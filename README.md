@@ -8,16 +8,12 @@ E-commerce stores collect data from users (how often a user reordered an item) a
 This repository serves conatins idealised examples of models that compute probabilities of a reorder from the [instacart opensource dataset](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2). This dataset provides transaction level data about orders and their associated products. Look through [notebooks](https://github.com/dinosoupy/reorder-prediction/tree/main/notebooks) for all model implementations and techniques.
 
 ## RNN model
-No manual feature engineering - pure deep learning approach. This approach can be reformulated as a binary prediction task: Given a user, a product, and the user's prior purchase history, predict whether or not the given product will be reordered in the user's next order. In short, the approach was to fit a variety of generative models to the prior data and use the internal representations from these models as features to second-level models.
-
-## XGBoost model
-Gradient boosting and tree ensembles tend to improve the prediction performance and reduce variance, leading to more stable and accurate results. 
+No manual feature engineering - pure deep learning approach. This approach can be reformulated as a binary prediction task: Given a user, a product, and the user's prior purchase history, predict whether or not the given product will be reordered in the user's next order. In short, the approach was to fit RNN model to the prior data and use the internal representations from these models as features to second-level models.
 
 ## Data Scheme
 The purpose of the models implemented here is not to optimise prediction scores on the instacart dataset, but to design a pipeline for tackling similar problems with other tabular ecommerce datasets.
     
-
-`orders` (3.4m rows, 206k users):
+* `orders` (3.4m rows, 206k users):
 * `order_id`: order identifier
 * `user_id`: customer identifier
 * `eval_set`: prior / train / test
