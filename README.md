@@ -46,7 +46,8 @@ where `SET` is one of the four following evaluation sets (`eval_set` in `orders`
 * `"prior"`: orders prior to that users most recent order (~3.2m orders)
 * `"train"`: training data (~131k orders)
 
-I've gone in depth in the data exploration notebook <INSERT LINK>
+I've gone in depth in the [data exploration notebook](notebooks/0.3-dinosoupy-data-exploration.ipynb)
+
 
 ## Objective function
-I've used mean F1 score as the evaluation metric. More details are in the performance-analysis notebook <INSERT LINK>
+I've used mean F1 score as the evaluation metric.
