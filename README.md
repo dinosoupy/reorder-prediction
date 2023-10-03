@@ -13,7 +13,7 @@ No manual feature engineering - pure deep learning approach. This approach can b
 ## Data Scheme
 The purpose of the models implemented here is not to optimise prediction scores on the instacart dataset, but to design a pipeline for tackling similar problems with other tabular ecommerce datasets.
     
-* `orders` (3.4m rows, 206k users):
+`orders` (3.4m rows, 206k users):
 * `order_id`: order identifier
 * `user_id`: customer identifier
 * `eval_set`: prior / train / test
